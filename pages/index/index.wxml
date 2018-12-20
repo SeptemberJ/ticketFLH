@@ -1,0 +1,281 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="userinfo"> -->           
+               <image  src="/icon/pic2.jpg" style='width:100%;height:300rpx' bindtap="change"  ></image>
+        
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto"></text>
+  </view>  -->
+  <!-- 选择日期 -->
+  <!-- <view class="weui-cell weui-cell_input" style="height:100rpx">
+    <view class="weui-cell__hd"  style="margin-right:40rpx；width:105rpx">
+        <view class="weui-label">日期</view>
+    </view>
+    <view class="weui-cell__bd" style="margin-left:0rpx;width:420rpx">
+        <picker mode="date" value="{{date}}" end="data.date" bindchange="bindDateChange">
+            <view class="weui-input">{{date}}</view>
+        </picker>
+    </view>
+</view> -->
+<!--查看X分钟后发车的班次  -->
+ <!-- <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view class="weui-label">分钟</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入最小发车时间" value="{{minutes}}" bindchange="inputminutes" name="minutes"/>
+    </view>
+</view> -->
+<!-- 出发地 -->
+ <!-- <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view class="weui-label" >出发地</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入出发城市" value="{{startcity}}" bindchange="inputstartcity" name="startcity"/>
+    </view>
+</view> -->
+
+          <!-- 之前的连级选择 -->
+ <!-- 出发地 
+<view class="weui-cell weui-cell_input"  style="height:100rpx">
+  <view class="weui-cell__hd">
+    <view class="weui-label">出发地</view>
+  </view>
+  <view class="weui-cell__bd">
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <view class="picker">
+        {{region[0]}},{{region[1]}},{{region[2]}}
+      </view>
+    </picker>
+  </view>
+</view> -->
+<!-- 目的地 -->
+ <!-- <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view class="weui-label">目的地</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入目的城市" value="{{endcity}}" bindchange="inputendcity" name="endcity"/>
+    </view>
+</view> -->
+
+
+          <!-- 之前的连级选择 -->
+<!-- <view class="weui-cell weui-cell_input"  style="height:100rpx">
+  <view class="weui-cell__hd">
+    <view class="weui-label">目的地</view>
+  </view>
+  <view class="weui-cell__bd">
+    <picker mode="region" bindchange="bindRegionChange2" value="{{region2}}">
+      <view class="picker">
+        {{region2[0]}},{{region2[1]}},{{region2[2]}}
+      </view>
+    </picker>
+  </view>
+</view> -->
+
+<!-- change -->
+<view class='outborder' >
+<view class="page">
+ <view class="page__bd page__bd_spacing">
+ <!-- 1 -->
+  <view class="weui-flex" style='padding-top:30rpx'>
+      <view class="weui-flex__item"><view class="placeholder">
+      <!-- 出发城市17 -->
+       <picker bindchange="bindAccountChange0" value="{{accountIndex0}}" range="{{orderloglistFscdd}}"  wx:if="{{selecttype == 0 }}">
+          <view>{{orderloglistFscdd[accountIndex0]}}</view>
+      </picker>
+      <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{orderloglistFfcdd}}" wx:if="{{selecttype == 1 }}">
+            <view >{{orderloglistFfcdd[accountIndex]}}</view>
+        </picker>
+
+      <!-- <input class="weui-input" placeholder="出发城市" value="{{startcity}}" bindinput="inputstartcity" name="startcity"/> -->
+        
+      </view></view>
+      <view class="weui-flex__item"><view class="placeholder">
+       <image  src="/icon/change.png" style='width:50rpx;height:50rpx;padding-top:30rpx;transform: rotate(90deg);'  bindtap="changeselect" ></image>
+        <!-- <image  src="/icon/change.png" style='width:50rpx;height:50rpx;padding-top:30rpx;transform: rotate(90deg);' bindtap="change"  ></image> -->
+      </view></view>
+      <view class="weui-flex__item"><view class="placeholder">
+      
+      <!-- 目的城市 17-->
+       <!-- <input class="weui-input" placeholder="目的城市" value="{{endcity}}" bindinput="inputendcity" name="endcity"/> -->
+       <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{orderloglistFfcdd}}" wx:if="{{selecttype == 0 }}">
+            <view >{{orderloglistFfcdd[accountIndex]}}</view>
+        </picker>
+        <picker bindchange="bindAccountChange0" value="{{accountIndex0}}" range="{{orderloglistFscdd}}"  wx:if="{{selecttype == 1 }}">
+          <view>{{orderloglistFscdd[accountIndex0]}}</view>
+      </picker>
+      </view></view>
+  </view>
+<!--2  -->
+   <view class="weui-flex" style='height:100rpx;'>
+    <view class="weui-flex__item"><view class="placeholder">
+      <view class="weui-cell weui-cell_input" style="height:100rpx">
+        <view class="weui-cell__hd"  style="margin-right:40rpx；width:105rpx">
+          <view style='margin-left:0rpx' >出发日期</view>
+        </view>
+        <view class="weui-cell__bd" style="margin-left:0rpx;">
+          <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="weui-input"><span>{{date}}</span><span style='font-size:26rpx;padding-left:20px'>{{xingqi}}</span></view>
+          </picker>
+        </view>
+      </view>
+    </view>
+ 
+    <!-- 3 -->
+ <!-- <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">
+            <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view style='margin-left:20rpx'>分钟</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入最小发车时间" value="{{minutes}}" bindchange="inputminutes" name="minutes"/>
+    </view>
+</view> -->
+            <!-- /3 -->
+            
+            </view></view>
+        </view>
+
+    </view>
+  </view>
+
+
+
+
+
+
+
+
+<view class="page__bd page__bd_spacing">
+  <button class="weui-btn" type="primary" bindtap="changetolog"  style="width:700rpx;margin-top:20rpx">查询班次</button>
+</view>
+
+<view style='width:700rpx;height:30px;margin-top:5px'>
+<!-- 改成滑动事件 -->
+
+  <view style="width:550rpx;float:left;font-size:26rpx; overflow:scroll;">
+  <!-- <scroll-view scroll-x>
+  <view class='hor'>
+    <block  wx:for="{{orderloglist}}" wx:key="id">
+      <view style='padding-left:10px;padding-right:10px;' bindtap="clickitem" data-index="{{index}}">{{item.Fscdd}}-{{item.Ffcdd}}</view>
+    </block>
+  </view>
+</scroll-view> -->
+
+  <!-- <scroll-view scroll-x="true">   -->
+  <view class="uploadWrap" scroll-x="true" overflow-x= "hidden">  
+    <view class="upload_Item" wx:for="{{orderloglist}}" wx:key="id">  
+      <span style='font-size:26rpx;padding-left:10px;padding-right:10px;float:left' bindtap="clickitem" data-index="{{index}}">{{item.Fscdd}}-{{item.Ffcdd}}</span>  
+    </view>  
+  </view>  
+<!-- </scroll-view> -->
+
+    <!-- <span style="padding-left:10px;padding-right:10px" wx:for="{{orderloglist}}" bindtap="clickitem" data-index="{{index}}">{{item.Fscdd}}-{{item.Ffcdd}}</span> -->
+  </view>
+
+  <view style="width:150rpx;float:right;font-size:26rpx;color:green;text-align:center" bindtap="gethistory" wx:if="{{ordertype == 0 }}">查看历史</view>
+  <view style="width:150rpx;float:right;font-size:26rpx;color:green;text-align:center" bindtap="delthistory" wx:if="{{ordertype == 1 }}">删除历史</view>
+</view>
+
+
+<!-- <scroll-view scroll-x="true">  
+  <view class="uploadWrap" scroll-x="true" >  
+    <view class="upload_Item" wx:for="{{orderloglist}}" wx:key="id">  
+      <image class="upload_Item_img" src="{{item.imgurl}}"data-id="{{item.id}}" bindtap="changeMainImgFn2"></image>  
+      <span class="upload_Item_img" data-index="{{index}}" bindtap="gethistory" style='font-size:26rpx;padding-left:10px;padding-right:10px'>{{item.Fscdd}}-{{item.Ffcdd}}</span>  
+      <icon type="clear" size="16" class="upload_Btn" color="#f64400">{{item.Fscdd}}-{{item.Ffcdd}}</icon>  
+      <view class="upload_mask {{upload_ImgSelId2==item.id? 'show':' ' }}"></view>  
+    </view>  
+  </view>  
+</scroll-view> -->
+
+
+<!--水平滚动-->
+<!-- <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+  <view style="background: red; width: 200px; height: 100px; display: inline-block" ></view>
+  <view style="background: green; width: 200px; height: 100px; display: inline-block"></view>
+  <view style="background: blue; width: 200px; height: 100px; display: inline-block"></view>
+  <view style="background: yellow; width: 200px; height: 100px; display: inline-block"></view>
+</scroll-view> -->
+
+<!-- <scroll-view scroll-x>
+  <view class='hor'>
+    <block  wx:for="{{orderloglist}}">
+      <view>{{item.Fscdd}}-{{item.Ffcdd}}</view>
+    </block>
+  </view>
+</scroll-view> -->
+
+<!-- 出发城市 -->
+        <!-- <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindAccountChange0" value="{{accountIndex0}}" range="{{orderloglistFscdd}}">
+                        <view class="weui-select">{{orderloglistFscdd[accountIndex0]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view> -->
+
+<!-- 目的城市 -->
+        <!-- <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindAccountChange" value="{{accountIndex}}" range="{{orderloglistFfcdd}}">
+                        <view class="weui-select">{{orderloglistFfcdd[accountIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+        </view> -->
+
+<!-- 乘车须知 -->
+  <view class="info" style='margin-top:40px'>
+  <view class="information"> 
+     <view>乘车须知</view>    
+  <!-- <view class="weui-cells__title" style='float:left'>乘车须知:</view> -->
+    <view class="info_Item" style='margin-top:30rpx'>
+     <!-- <view>乘车须知:</view> -->
+     <view style='font-size:14px;padding-bottom:6px'>{{ccxzlist}}</view>     
+    </view>
+  </view>
+  </view>
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>
+
+
+
+    <!-- <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+        </view>
+
+        
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+            <view  wx:for="{{accounts}}" class="weui-cell" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">
+                    <view>{{item}}</view>
+                </view>
+            </view>
+        </view>
+    </view> -->

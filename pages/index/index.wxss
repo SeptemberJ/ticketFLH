@@ -1,0 +1,139 @@
+/**index.wxss**/
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 50rpx;
+}
+
+.outborder{
+  width: 93%;
+  height: 230rpx;
+  background: #f9f9f9;
+  margin-top:20rpx
+}
+/* .weui-input {
+
+height:1.8em;
+min-height:1.8em;
+line-height:1.8em;
+
+} */
+
+.weui-cells{position:relative;margin-top:0.17647059em;background-color:#fff;line-height:1.41176471;font-size:17px}
+.weui-cell {
+padding-left: 15px;
+padding-right: 15px;
+position:relative;
+display:-webkit-box;
+display:-webkit-flex;
+display:flex;
+-webkit-box-align:center;
+-webkit-align-items:center;
+align-items:center;
+
+}
+
+.placeholder{
+    padding-left: 15px;
+    padding-right: 15px;
+ 
+    text-align: center;
+    /* background-color: #EBEBEB; */
+    /* height: 2em;
+    line-height: 2em; */
+     height: 80rpx;
+    line-height: 80rpx;
+    color: #4e4e4e;
+}
+/* .button-sp-area{
+  margin: 0 auto;
+  padding-top: 15px;
+  width: 60%;
+}
+.mini-btn{
+  margin-right: 5px;
+} */
+
+
+.uploadWrap{height:30px; width:100%; display: flex; display: -webkit-box;flex-wrap: nowrap; overflow-y:hidden}  
+/* .upload_Item{flex: 1;}   */
+/* .upload_Item_img{ width: 160rpx; height: 160rpx;}   */
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+.flex-wrp {display: flex;}
+.bc_green {background: green;width:100px; height: 100px;}
+.bc_red {background: red;width:100px; height: 100px;}
+.bc_blue {background: blue;width:100px; height: 100px;}
+
+.hor {
+  display: flex;
+  flex-direction: row;
+  min-width: 600rpx;
+  font-size:26rpx;
+  overflow: hidden;
+}
+
+ .info{
+  width: 720rpx;
+  height: auto;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border-radius: 10rpx;
+  background: #f9f9f9;
+}
+
+.information{
+  width: 710rpx;
+  height: auto;
+  margin-top: 10rpx ;
+  margin-right: 5rpx ;
+  margin-bottom: 20rpx ;
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  border-radius: 10rpx;
+  /* background: #f6f6f6; */
+  border-bottom: 1px solid #eee;
+  color: #4e4e4e
+}

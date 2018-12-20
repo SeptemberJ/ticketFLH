@@ -1,0 +1,119 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+        <!-- <view class="weui-form-preview" wx:for="{{orderlist}}">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">付款金额</view>
+                    <view class="weui-form-preview__value_in-hd">¥{{item.famount}}</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">{{item.Ffcdd}}-{{item.Fscdd}}</view>
+                    <view class="weui-form-preview__value">从{{item.Fscdd}}出发到{{item.Ffcdd}}，途径{{item.Ftujing}}，订单号为{{item.forderNo}},派工单号为{{item.fpaigongdanNo}}</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">出发时间</view>
+                     <view class="weui-form-preview__value" >{{item.Fqsrq}}</view>
+                </view>             
+            </view>
+            <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" data-ftype="{{item.ftype}}"  bindtap="pay">付款</view>
+            </view>
+        </view>  -->
+
+      <!-- <view class="info">
+      <view class="information"  bindtap="buybuy">      
+        <view class='icon'> <image src="/icon/bus1.png" style='width:40rpx;height:40rpx;' ></image>  汽车票</view>
+        <view class='line'>上海-海门</view>
+        <view class='data'>
+          <view class='data-left' style='width:70%;font-size:25rpx;float:left'>出发时间：8月30日 12：00</view> <view class='data-right' >￥2</view> </view>
+        <view style='width:100%;text-align:right;margin-bottom:10rpx'>
+        <button  plain="true" size='mini' type="default" disabled="true" style='margin-right:20rpx'>删除</button>
+        <button  type="primary"  plain="true" size='mini' bindtap="buybuy">支付</button>    
+          </view> -->
+   
+      <!-- <view>
+        <view class="left">11-22</view>
+        <view class="right">333</view>
+      </view>
+      -->
+  
+      <!-- <view class="itemColumTit" >19:45</view> -->
+      <!-- <view class="waitInput">
+       <view class="backInput0"><image  src="/icon/bus1.png" style='width:20rpx;height:20rpx; margin-right:10rpx'></image>{{item.Ffcdd}}</view>
+        <view class="backInput1"><image  src="/icon/bus.png" style='width:20rpx;height:20rpx; margin-right:10rpx'></image>{{item.Fscdd}</view>  
+      </view> -->
+       <!-- <view class="backInput">
+        <view class="backInput2">￥20</view>
+        <view class="backInput3">余票：3</view>   
+       </view> -->
+   
+  <!-- </view> -->
+  <!-- </view> -->
+
+  <!-- 2 现在用的-->
+   <view class="info" wx:for="{{orderlist}}">
+   <view>
+  <view class="information" data-index="{{index}}" bindtap="buybuy" data-ftype="{{item.ftype}}">      
+    <view class='icon'> <image src="/icon/bus1.png" style='width:40rpx;height:40rpx;' ></image>  汽车票</view>
+    <view class='line'>
+      <span>{{item.Fscdd}}-{{item.Ffcdd}}</span>
+      <span style="float:right;font-size:12px;">{{item.forderNo}}</span>      
+    </view>
+     <view class='data'>
+      <view class='data-left' >出发时间：{{item.Fqsrq}}</view> 
+      <view wx:if="{{item.fticketNum != 0 }}" class='data-right'>票价￥{{item.famount/item.fticketNum}}</view> 
+      </view></view>
+    <view style='width:100%;text-align:right;margin-top:10rpx'>
+    <!-- 已支付的取消/退款 -->
+    <view wx:if="{{item.fcheckstatus == ''}}"> 失效 </view>
+    <view wx:else> 
+      <view  wx:if="{{item.fstatus == 3 &&item.fcheckstatus == ''}}">已过期<span style="font-size:14px;color:#666" wx:if="{{item.fcheckstatus == ''}}">(失效
+)</span></view>
+      <view  wx:if="{{item.fstatus == 4 }}">退款</view>       
+      <view  wx:if="{{item.fstatus == 5}}">不能退票</view>
+      <view  wx:if="{{item.fstatus == 6 }}">已过期</view>  
+      <view  wx:if="{{item.fstatus == 7 }}">已使用</view>     
+    </view>
+      <!-- <view  wx:if="{{item.fstatus == 3 &&item.fcheckstatus == ''}}">已过期<span style="font-size:14px;color:#666" wx:if="{{item.fcheckstatus == ''}}">(失效
+)</span></view>
+      <view  wx:if="{{item.fstatus == 4 }}">退款</view>       
+     <view  wx:if="{{item.fstatus == 5}}">不能退票</view>
+     <view  wx:if="{{item.fstatus == 6 }}">已过期</view>  
+     <view  wx:if="{{item.fstatus == 7 }}">已使用</view>      -->
+     <!-- 11-28  -->
+     <!-- <view  wx:if="{{item.fcheckstatus == '' }}">已失效</view>     -->
+     <view wx:if="{{item.fcheckstatus == 0 }}">
+     <!-- <button style='margin-right:20rpx' plain="true" size='mini' wx:if="{{item.fstatus == 2 && item.showrefund ==1}}" bindtap="refund" data-index="{{index}}">取消</button> -->
+    <button  type="default" plain="true" size='mini' disabled="true"  wx:if="{{item.fstatus == 2}}" >已付</button>
+     <!-- <button  type="default" plain="true" size='mini' disabled="true"  wx:if="{{item.fstatus == 2||item.fstatus == 5 }}" >已付</button> -->
+     <!-- <button style='margin-right:20rpx' plain="true" size='mini' wx:if="{{item.fstatus == 4}}" bindtap="refund" data-index="{{index}}">退款</button>  -->
+     <!-- <button type="default" plain="true" size='mini' disabled="true"  wx:if="{{item.fstatus == 3 || item.fstatus == 4}}" >取消</button> -->
+     <!-- 未支付取消 -->
+     <button style='margin-right:20rpx' plain="true" size='mini' wx:if="{{item.fstatus == 1}}" bindtap="buydel" data-index="{{index}}">取消</button> 
+      <!--未支付支付  -->
+     <button  type="primary" plain="true" size='mini' wx:if="{{item.fstatus == 1}}" bindtap="buybuy" data-index="{{index}}">支付</button>      
+     <!-- <button  plain="true" size='mini' type="default" disabled="true" style='margin-right:20rpx'>删除</button>
+     <button  type="primary"  plain="true" size='mini' bindtap="buybuy">支付</button>     -->
+     </view>
+    </view>  
+  </view>
+  </view>
+
+
+
+
+       
+
+</view>
+
+
+  

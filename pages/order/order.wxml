@@ -1,0 +1,155 @@
+
+
+  <view class="info" style='margin-left:15rpx'>
+  <view class="information"  >   
+
+    <view class="info_Item" style='margin-top:20rpx;padding-bottom:10rpx'>
+      <!-- 1 -->
+      <view class="itemColumTit" style='padding-top:20rpx;'>
+       <view class="itemColumTit1">{{Array.Fscdd}}</view>
+        <view class="itemColumTit2">上车地点</view>  
+      </view>
+      <!-- 2 -->
+      <view class="waitInput">
+       <view class="backInput0"><image  src="/icon/to.png" style='width:100rpx;height:30rpx;padding-top:30rpx' ></image></view>
+        <view class="backInput1">{{Array.Fqsrq}}</view>  
+      </view>
+      <!-- 3 -->
+       <view class="backInput">
+        <view class="backInput2">{{Array.Ffcdd}}</view>
+        <view class="backInput3" wx:if="{{Array.fticketNum != 0 }}" >票价￥{{Array.famount/Array.fticketNum}}</view>   
+       </view>
+       <!-- // -->     
+         
+    </view> 
+     <view class="backInput4" style='justify-content: center;text-align:left;height:50rpx;line-height:50rpx'>
+          从{{Array.Fscdd}}出发到{{Array.Ffcdd}}，途径{{Array.Ftujing}}，该行程为{{Array.Fxingcheng}}，订单号{{Array.forderNo}}
+       </view> 
+  </view>
+  </view>
+
+
+  <view class="info" style='margin-left:15rpx'>
+  <view class="information" style='height:80rpx' >   
+
+    <view class="info_Item" style='margin-top:20rpx'>
+         <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入手机号" value="{{Array.fmobiel}}" bindchange="phone" name="phone" disabled="true"/>
+        </view>
+    </view>
+    </view>    
+  </view>
+  </view>
+
+
+ <!-- <view class="info" style='margin-left:15rpx'>
+  <view class="information"  style='height:80rpx'>   
+    <view class="info_Item" style='margin-top:20rpx'>
+         <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">身份证号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入身份证号" value="{{cardid}}" bindchange="cardid" name="cardid"/>
+        </view>
+    </view>
+    </view> 
+  </view>
+  </view> -->
+
+
+
+
+ <!-- <view class="info" style='margin-left:15rpx'>
+  <view class="information" style='padding-top:10rpx'>   
+    <view class="info_Item" style='margin-top:20rpx'>
+         <view class="weui-cell weui-cell_input">
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">乘车人员</view>
+        </view>
+        <view class="weui-cell__bd">
+            <view wx:for="{{namelist}}" >{{item}} </view>
+        </view>
+
+    </view>
+    </view> 
+
+  </view>
+  </view> -->
+
+
+   <view class="info" style='margin-left:15rpx'>
+  <view class="information" style='height:80rpx' >  
+
+   <view class="info_Item" style='margin-top:20rpx'>
+         <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">车票数量</view>
+        </view>
+        <view class="weui-cell__bd">
+         <!-- <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">
+            <image src="/icon/minus1.png" bindtap="minus" style='width:40rpx;height:40rpx;padding-top:20rpx;' ></image>           
+            </view></view> -->
+            <view class="weui-flex__item"><view class="placeholder">
+              <input class="weui-input" placeholder="请输入车票数量" value="{{Array.seatlist.length}}" bindchange="ticketnum" name="ticketnum" style='text-align:left' disabled="true"/> 
+            </view></view>
+             <!-- <view class="weui-flex__item"><view class="placeholder">
+             <image src="/icon/add.png" bindtap="add" style='width:40rpx;height:40rpx;padding-top:20rpx' ></image>
+             </view> -->
+             <!-- </view>
+        </view> -->
+        </view>
+    </view>
+    </view>
+  </view>
+  </view>
+
+  
+<!-- 
+<view style='font-size:25rpx;color:#6f6f6f'>如果状态为已支付，只显示车票信息跟二维码</view> -->
+
+
+
+<!-- <view style='height:220px;overflow-y:scroll'> -->
+  <view class="info" style='margin-left:15rpx;margin-bottom:30px; height:350px;' wx:if="{{fstatus == 2||fstatus == 5&&Array.fcheckstatus == 0}}"  wx:for="{{newindex}}">
+   <!-- <view class="info" style='margin-left:15rpx'>    -->
+  <view class="information" bindtap="changepage" style='padding-top:10rpx'>   
+    <view class="info_Item" style='margin-top:20rpx'>
+      <view class="weui-cell weui-cell_input" style='margin-bottom:30rpx;'>
+        <view class="weui-cell__hd">
+          <view class="weui-label">扫码上车</view>
+          <view class="weui-label">座位：{{item.fseat}}</view>
+        </view>
+        <view class="weui-cell__bd">
+        <!-- 生成的二维码 -->
+          <canvas canvas-id='{{item.i}}'></canvas>       
+        </view>
+      </view>
+    </view>
+    <span>
+      <span wx:if="{{item.fcheckStatus == 0}}" style="color:green">未使用</span>
+      <span data-index="{{index}}" wx:if="{{Array. fstatus != 5 &&item.fcheckStatus == 0}}"bindtap="delbuy" style="color:green">取消</span>
+      <!-- <span data-index="{{index}}" wx:if="{{item.fcheckStatus == 0}}"bindtap="delbuy" style="color:green">取消</span> -->
+      </span>
+    <span wx:if="{{item.fcheckStatus == 2}}" style="color:red">已使用</span>
+  </view>
+  </view>
+  <!-- </view> -->
+  
+ <view style='height:30px'></view>
+
+<!--合计支付-->
+  <view class="footer_total">
+    <view class="toatl_price">合计：¥{{Array.famount}} </view>
+    <button class="submitBt" bindtap="toPay" disabled="{{canDo}}">支付    </button>
+  </view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

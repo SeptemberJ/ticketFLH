@@ -1,0 +1,107 @@
+
+
+
+<!--index.wxml-->
+<view class="container">
+<view style='width:98%;padding-left:2%;background-color:#f9f9f9;height:170rpx'>
+   <view class="userinfo" style='float:left;width:25%'><button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+     <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </block></view>
+    <view style='margin-top:40rpx;font-size:30rpx;color:#4e4e4e'> <text class="userinfo-nickname" style='float:left;width:75%;color:#4e4e4e'>{{userInfo.nickName}}</text>
+    <text class="userinfo-nickname" style='float:left;width:75%;font-size:30rpx;color:#4e4e4e'>{{phone}}</text>
+</view>
+</view>
+<!-- 222 -->
+<!-- <view class="page" style='width:100%'>
+    <view class="page__bd page__bd_spacing">
+        <view class="weui-flex">
+            <view class="weui-flex__item"><view class="placeholder">
+             <view style='width:100%'> <image  src="/icon/my.png" style='width:60rpx;height:60rpx;text-align:left' ></image><text  style='font-size:30rpx;color:#4e4e4e;text-align:left'>13244</text></view>
+              <view ><text  style='font-size:30rpx;color:#4e4e4e;text-align:left'>13244</text></view>
+            </view></view>
+            <view class="weui-flex__item"><view class="placeholder">weui</view></view>
+            <view class="weui-flex__item"><view class="placeholder">weui</view></view>
+        </view>
+    </view>
+</view> -->
+
+
+ <view class="info" >
+  <view class="information">   
+    <view class="info_Item" style='margin-top:20rpx'>
+      <view class="itemColumTit"  bindtap="changeto1">
+         <view class="backInput2" style='text-align:center'><image  src="/icon/bus1.png" style='width:60rpx;height:60rpx; margin-right:10rpx'></image></view>
+        <view class="backInput3" style='text-align:center'>我的行程</view>   
+      </view>
+      <view class="waitInput" bindtap="changeto2">
+       <view class="backInput0"><image  src="/icon/people.png" style='width:60rpx;height:60rpx; margin-right:10rpx'></image></view>
+        <view class="backInput1">乘车人员</view>  
+      </view>
+       <view class="backInput" bindtap="changeto3">
+        <view class="backInput2" style='text-align:center'><image  src="/icon/my.png" style='width:60rpx;height:60rpx; margin-right:10rpx'></image></view>
+        <view class="backInput3" style='text-align:center'>个人信息</view>   
+       </view>
+    </view>
+  </view>
+  </view>
+
+<!-- 乘车须知 -->
+  <view class="info" >
+  <view class="information">   
+  <view class="weui-cells__title" style='float:left'>乘车须知</view>
+    <view class="info_Item" style='margin-top:20rpx'>
+     <!-- <view>乘车须知:</view> -->
+     <view style='color:#999;font-size:14px;'>{{ccxzlist}}</view>     
+    </view>
+  </view>
+  </view>
+
+<!-- 3 -->
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+<view class="weui-cells__title">个人中心</view>
+<view class="weui-cells weui-cells_after-title">
+    <view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="changeto">
+            <view class="weui-cell__bd" style="margin-right:400rpx">我的行程</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view> -->
+        <!-- <view class="weui-cells weui-cells_after-title">
+            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">上海-海门 时间：2017年1月22日</view>
+                <view class="weui-cell__ft "><button class="weui-btn mini-btn" type="primary" size="mini" style=" color: #04be02;background: #f0f9eb;border-color: #c2e7b0;">删除</button></view>
+            </navigator>
+            <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">上海-海门 时间：2017年1月23日</view>
+                <view class="weui-cell__ft "><button class="weui-btn mini-btn" type="primary" size="mini" style=" color: #04be02;background: #f0f9eb;border-color: #c2e7b0;">删除</button></view>
+            </navigator>
+        </view> -->
+        <!-- 3 -->
+    <!-- </view> -->
+    <!-- 3 -->
+    <!-- <navigator url="/pages/peoplelist/peoplelist" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">乘车人员</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator> -->
+
+
+    <!-- <view class="weui-cells weui-cells_after-title">
+        <navigator url="/pages/peoplelist/peoplelist" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">姓名：11</view>
+            <view class="weui-cell__ft "><button class="weui-btn mini-btn" type="primary" size="mini" style=" color: #04be02;background: #f0f9eb;border-color: #c2e7b0;">删除</button></view>
+        </navigator>
+        <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">姓名：22</view>
+            <view class="weui-cell__ft "><button class="weui-btn mini-btn" type="primary" size="mini" style=" color: #04be02;background: #f0f9eb;border-color: #c2e7b0;">删除</button></view>
+        </navigator>
+    </view> -->
+
+<!-- 3 -->
+<!-- </view> -->
+</view>

@@ -1,0 +1,28 @@
+<view>
+<view class="weui-cells__title">请选择乘车人员</view>
+        <view class="weui-cells weui-cells_after-title">
+            <checkbox-group bindchange="checkboxChange">
+                <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="id">
+                    <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                        <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                    </view>
+                    <view class="weui-cell__bd">{{item.realname}}</view>
+                </label>
+            </checkbox-group>
+            <view class="weui-cell weui-cell_link">
+                <view class="weui-cell__bd" bindtap="addmore" >添加更多</view>
+            </view>           
+        </view>
+
+        <view class="page__bd page__bd_spacing">
+          <button class="weui-btn" type="primary" style="width:700rpx;margin-top:20rpx" bindtap="submit">确定</button>
+        </view>
+
+</view>
+
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>

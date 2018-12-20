@@ -1,0 +1,57 @@
+<!--index.wxml-->
+<view class="container">
+    
+    <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">7月1日  海门-南通</view>
+        </navigator>    
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">发车时间</view>
+                    <view class="weui-form-preview__value_in-hd">7：00</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">付款金额</view>
+                    <view class="weui-form-preview__value">￥20</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">车程备注</view>
+                    <view class="weui-form-preview__value" >11111111111111111111111111111111111111111111</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator url="/pages/buy/buy" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">购买</navigator>
+            </view>
+        </view>  
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">发车时间</view>
+                    <view class="weui-form-preview__value_in-hd">8：00</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">付款金额</view>
+                    <view class="weui-form-preview__value">￥20</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">车程备注</view>
+                    <view class="weui-form-preview__value" >11111111111111111111111111111111111111111111</view>
+                </view>             
+            </view>
+            <view class="weui-form-preview__ft">
+                <navigator url="/pages/buy/buy" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">购买</navigator>
+            </view>
+        </view>  
+</view>
+  

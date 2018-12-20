@@ -1,0 +1,42 @@
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title">
+
+
+             <view class="weui-cells__title">乘客类型</view> 
+            <view class="weui-cells weui-cells_after-title" style='width:100%'>
+                 <radio-group bindchange="radioChange">
+                    <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+                        <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+    
+                        <view class="weui-cell__bd">{{item.name}}</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                        </view>
+                    </label>
+                </radio-group> 
+            </view> 
+
+ <view class="weui-cell weui-cell_input" style='margin-top:20rpx'>
+        <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入姓名" value="{{name}}" bindinput="name" name="name"/>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+        <view class="weui-cell__hd">
+            <view class="weui-label">身份证号</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入身份证号" value="{{credno}}" bindinput="credno" name="credno"/>
+        </view>
+    </view>
+</view>
+
+<view class="page__bd page__bd_spacing">
+ <button class="weui-btn mini-btn" type="primary" size="mini" style="margin-left:280rpx" bindtap="updata">修改</button>
+    <button class="weui-btn mini-btn" type="default" size="mini" bindtap="deletedata">删除</button>
+           
+    <!-- <button class="weui-btn" type="primary" bindtap="submit" style="width:700rpx;margin-top:20rpx">确认修改</button> -->
+</view>
