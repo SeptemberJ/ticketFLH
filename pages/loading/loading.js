@@ -58,6 +58,7 @@ Page({
                 },
               success: function (res) {
                 if (res.data.code == 0) {
+                  wx.hideLoading()
                   wx.showModal({
                     content: '去绑定',
                     showCancel: false,
@@ -86,6 +87,7 @@ Page({
                     return false
                   }
                   if (res.data.userInfo.fstatus == 0) {
+                    wx.hideLoading()
                     wx.showModal({
                       content: '您的账号还未通过审核',
                       showCancel: false,

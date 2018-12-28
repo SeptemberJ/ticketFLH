@@ -128,13 +128,8 @@ Page({
       }
       
       temp.push(datatable)
-      // var busUserList = {
-      //   fopenid: app.globalData.openid,
-      //   items: temp.push(datatable),
-      // }
       console.log(datatable)
       console.log(temp)
-      //JSON.stringify(busUserList)
       wx.request({
         url: appjs.url + 'busUser', 
         method: "post",
@@ -143,18 +138,29 @@ Page({
         },
         data: { 'fopenid': app.globalData.openid, 'items': temp },
         success: function (res) {
-          if(res.code==2){
+          console.log(res.data.code)
+          console.log(res.data.code == 0)
+          console.log(res.data.code == '0')
+          if (res.data.code==0){
             wx.showToast({
-              title: '数据异常',
+              title: '添加成功',
+              icon: 'success',
+              duration: 1500
+            })
+            wx.navigateBack();
+            // wx.navigateTo({
+            //   url: '/pages/peoplelist/peoplelist'
+            // })
+          } else {
+            wx.showToast({
+              title: '添加失败',
               icon: 'success',
               duration: 1500
             })
           }
         }
       })
-      wx.navigateTo({
-        url: '/pages/peoplelist/peoplelist'
-      })//保留当前页面能返回前一个页面
+      //保留当前页面能返回前一个页面
     }
   },
   showTopTips: function(){

@@ -282,7 +282,7 @@ Page({
                 icon: 'success',
                 duration: 2000
               })
-            if (app.globalData.fstatus != 0) {
+            if (res.data.fstatus != 0) {
                 wx.switchTab({
                   url: '/pages/index/index'
                 })

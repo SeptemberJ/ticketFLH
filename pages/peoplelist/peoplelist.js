@@ -172,6 +172,9 @@ bindDateChange: function (e) {
     console.log('跳转页面')
   },
   getbususerlist:function(){
+    wx.showLoading({
+      title: '加载中',
+    })
     var _this = this;
     wx.request({
       url: appjs.url + 'busUser',
@@ -183,6 +186,7 @@ bindDateChange: function (e) {
         'open_id': app.globalData.openid,
       },
       success: function (res) {
+        wx.hideLoading()
         if (res.data.busUserList.length !=0){
           _this.setData({
             staff: res.data.busUserList,

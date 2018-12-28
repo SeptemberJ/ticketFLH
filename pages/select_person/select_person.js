@@ -139,25 +139,80 @@ Page({
     })
   },
 
-
-
-
-  checkboxChange: function (e) {
+  checkboxChange2: function (e) {
+    console.log(this.data.checkboxItems)
+    debugger
     var namelist = [];
     var idlist = [];
-  
+
     var checkboxItems = this.data.checkboxItems, values = e.detail.value;
     for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
       checkboxItems[i].checked = false;
       for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
         if (checkboxItems[i].id == values[j]) {
-          checkboxItems[i].checked = true;        
-          namelist.push(checkboxItems[i].realname)
-          idlist.push(checkboxItems[i].id)
-          break;        
+          // 审核没过的的不能选择
+          if (checkboxItems[i].fstatus && checkboxItems[i].fstatus != 0) {
+            checkboxItems[i].checked = true;
+            namelist.push(checkboxItems[i].realname)
+            idlist.push(checkboxItems[i].id)
+            // break; 
+          } else {
+            console.log(checkboxItems[i].fstatus)
+            console.log(checkboxItems[i].realname)
+            console.log(checkboxItems)
+            wx.showModal({
+              content: '该人员还未通过审核，暂时不能添加!',
+              showCancel: false,
+              success: function (res) {
+              }
+            });
+            return false
+          }
+
         }
       }
     }
+    wx.setStorage({
+      key: 'namelist',
+      data: { 'names': namelist, 'ids': idlist },
+    })
+    this.setData({
+      checkboxItems: checkboxItems,
+      namelist: namelist,
+      idlist: idlist
+    });
+  },
+
+
+  checkboxChange: function (e) {
+    var namelist = [];
+    var idlist = [];
+    console.log(e.detail.value)
+    var checkboxItems = this.data.checkboxItems, values = e.detail.value;
+    for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
+      checkboxItems[i].checked = false;
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (checkboxItems[i].id == values[j]) {
+          // 审核没过的的不能选择
+          if (checkboxItems[i].fstatus && checkboxItems[i].fstatus != 0){
+            checkboxItems[i].checked = true;
+            namelist.push(checkboxItems[i].realname)
+            idlist.push(checkboxItems[i].id)
+            // break; 
+          }else{
+            e.detail.value.splice(j,1)
+            wx.showModal({
+              content: '该人员还未通过审核，暂时不能添加!',
+              showCancel: false,
+              success: function (res) {
+              }
+            });
+            return false
+          }    
+        }
+      }
+    }
+
     wx.setStorage({
       key: 'namelist',
       data: { 'names': namelist, 'ids': idlist},
