@@ -1,4 +1,4 @@
-// var url = 'http://205.168.1.100:8083/'
+//var url = 'http://172.16.52.100:8083/
 var url = 'https://www.lzyts.com/ticketJK/'
 
 module.exports = {

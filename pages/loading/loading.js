@@ -1,5 +1,5 @@
 // pages/loading/loading.js
-var url = 'https://www.lzyts.com/ticketJK/'
+// var url = 'https://www.lzyts.com/ticketJK/'
 const util = require('../../utils/util.js')
 var appjs = require('../../app.js')
 const app = getApp()
